@@ -1,61 +1,43 @@
-<?php
+    <?php
 
-function convert_to_meters($value, $from_unit) {
+function convert_to_gallons($value, $from_unit) {
   switch($from_unit) {
-    case 'inches':
-      return $value * 0.0254;
+    case 'bucket':
+      return $value * 4;
       break;
-    case 'feet':
-      return $value * 0.3048;
+    case 'butt':
+      return $value * 108;
       break;
-    case 'yards':
-      return $value * 0.9144;
+    case 'firkin':
+      return $value * 9;
       break;
-    case 'miles':
-      return $value * 1609.344;
+    case 'hogshead':
+      return $value * 54;
       break;
-    case 'millimeters':
-      return $value * 0.001;
-      break;
-    case 'centimeters':
-      return $value * 0.01;
-      break;
-    case 'meters':
-      return $value;
-      break;
-    case 'kilometers':
-      return $value * 1000;
+    case 'pint':
+      return $value * 0.125;
       break;
     default:
       return "Unsupported unit.";
   }
 }
   
-function convert_from_meters($value, $to_unit) {
+function convert_from_gallons($value, $to_unit) {
   switch($to_unit) {
-    case 'inches':
-      return $value / 0.0254;
+    case 'bucket':
+      return $value / 4;
       break;
-    case 'feet':
-      return $value / 0.3048;
+    case 'butt':
+      return $value / 108;
       break;
-    case 'yards':
-      return $value / 0.9144;
+    case 'firkin':
+      return $value / 9;
       break;
-    case 'miles':
-      return $value / 1609.344;
+    case 'hogshead':
+      return $value / 54;
       break;
-    case 'millimeters':
-      return $value / 0.001;
-      break;
-    case 'centimeters':
-      return $value / 0.01;
-      break;
-    case 'meters':
-      return $value;
-      break;
-    case 'kilometers':
-      return $value / 1000;
+    case 'pint':
+      return $value / 0.125;
       break;
     default:
       return "Unsupported unit.";
@@ -63,8 +45,8 @@ function convert_from_meters($value, $to_unit) {
 }
 
 function convert_length($value, $from_unit, $to_unit) {
-  $meter_value = convert_to_meters($value, $from_unit);
-  $new_value = convert_from_meters($meter_value, $to_unit);
+  $gallon_value = convert_to_gallons($value, $from_unit);
+  $new_value = convert_from_gallons($gallon_value, $to_unit);
   return $new_value;
 }
 
@@ -101,14 +83,11 @@ if($_POST['submit']) {
           <label>From:</label>&nbsp;
           <input type="text" name="from_value" value="<?php echo $from_value; ?>" />&nbsp;
           <select name="from_unit">
-            <option value="inches"<?php if($from_unit == 'inches') { echo " selected"; } ?>>inches</option>
-            <option value="feet"<?php if($from_unit == 'feet') { echo " selected"; } ?>>feet</option>
-            <option value="yards"<?php if($from_unit == 'yards') { echo " selected"; } ?>>yards</option>
-            <option value="miles"<?php if($from_unit == 'miles') { echo " selected"; } ?>>miles</option>
-            <option value="millimeters"<?php if($from_unit == 'millimeters') { echo " selected"; } ?>>millimeters</option>
-            <option value="centimeters"<?php if($from_unit == 'centimeters') { echo " selected"; } ?>>centimeters</option>
-            <option value="meters"<?php if($from_unit == 'meters') { echo " selected"; } ?>>meters</option>
-            <option value="kilometers"<?php if($from_unit == 'kilometers') { echo " selected"; } ?>>kilometers</option>
+            <option value="bucket"<?php if($from_unit == 'bucket') { echo " selected"; } ?>>bucket</option>
+            <option value="butt"<?php if($from_unit == 'butt') { echo " selected"; } ?>>butt</option>
+            <option value="firkin"<?php if($from_unit == 'firkin') { echo " selected"; } ?>>firkin</option>
+            <option value="hogshead"<?php if($from_unit == 'hogshead') { echo " selected"; } ?>>hogshead</option>
+            <option value="pint"<?php if($from_unit == 'pint') { echo " selected"; } ?>>pint</option>
           </select>
         </div>
         
@@ -116,14 +95,11 @@ if($_POST['submit']) {
           <label>To:</label>&nbsp;
           <input type="text" name="to_value" value="<?php echo $to_value; ?>" />&nbsp;
           <select name="to_unit">
-            <option value="inches"<?php if($to_unit == 'inches') { echo " selected"; } ?>>inches</option>
-            <option value="feet"<?php if($to_unit == 'feet') { echo " selected"; } ?>>feet</option>
-            <option value="yards"<?php if($to_unit == 'yards') { echo " selected"; } ?>>yards</option>
-            <option value="miles"<?php if($to_unit == 'miles') { echo " selected"; } ?>>miles</option>
-            <option value="millimeters"<?php if($to_unit == 'millimeters') { echo " selected"; } ?>>millimeters</option>
-            <option value="centimeters"<?php if($to_unit == 'centimeters') { echo " selected"; } ?>>centimeters</option>
-            <option value="meters"<?php if($to_unit == 'meters') { echo " selected"; } ?>>meters</option>
-            <option value="kilometers"<?php if($to_unit == 'kilometers') { echo " selected"; } ?>>kilometers</option>
+            <option value="bucket"<?php if($to_unit == 'bucket') { echo " selected"; } ?>>bucket</option>
+            <option value="butt"<?php if($to_unit == 'butt') { echo " selected"; } ?>>butt</option>
+            <option value="firkin"<?php if($to_unit == 'firkin') { echo " selected"; } ?>>firkin</option>
+            <option value="hogshead"<?php if($to_unit == 'hogshead') { echo " selected"; } ?>>hogshead</option>
+            <option value="pint"<?php if($to_unit == 'pint') { echo " selected"; } ?>>pint</option>
           </select>
           
         </div>
